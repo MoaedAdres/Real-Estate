@@ -6,6 +6,7 @@ import SignOut from './pages/SignOut'
 import Profile from './pages/Profile'
 import About from './pages/About'
 import Header from './components/header'
+import { DragDropContext,Draggable,Droppable } from 'react-beautiful-dnd'
 const App = () => {
   return (
     <>
