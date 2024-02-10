@@ -2,9 +2,11 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom'
 import * as Yup from 'yup';
-
-
+import axios from '../config/axios'
+import { useCustomMutation } from '../hooks/useCustomMutation';
+import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
+  const navigate = useNavigate()
   const SignupSchema = Yup.object().shape({
     username: Yup.string()
       .min(5, 'minimum is 5')
@@ -18,12 +20,16 @@ const SignUp = () => {
     email: '',
     password: '',
   }
+  const { mutate: createUserMutation, isLoading: isCreatingUser, isError, error } = useCustomMutation({
+    successFn: () => { navigate('/sign-in') },
+    mutationFn: (user) => { return axios.post('api/auth/sign-up', user) }
+  })
   const submitHandler = (values) => {
     console.log(values)
+    createUserMutation(values)
   }
   return (
     <div className='flex flex-col max-w-lg mx-auto'>
-
       <div className='flex  flex-col gap-[10px]'>
         <h1 className='text-3xl text-center font-semibold my-7'>Sign Up</h1>
         <Formik

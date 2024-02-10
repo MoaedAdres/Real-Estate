@@ -21,7 +21,7 @@ const Header = () => {
                 </form>
                 <ul className='flex gap-4'>
                     {navLinks.map((link, index) => (
-                        <NavLink to={link.path}
+                        <NavLink key={link.linkText} to={link.path}
                         // className={({ isActive, isPending }) => isActive ? "text-red-700 underline" : ''}
                         >
                             <li className='hidden sm:inline text-slate-700 hover:underline'>{link.linkText}</li>

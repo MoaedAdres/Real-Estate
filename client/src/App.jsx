@@ -6,11 +6,10 @@ import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
 import About from './pages/About'
 import Header from './components/header'
-import { DragDropContext,Draggable,Droppable } from 'react-beautiful-dnd'
 const App = () => {
   return (
     <>
-    <Header />
+      <Header />
       <Routes>
         <Route path='/about' element={<About />} />
         <Route path='/sign-in' element={<SignIn />} />
